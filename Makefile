@@ -1,12 +1,21 @@
-CC=gcc
-TARGET=interprete
+CC     = gcc
+CFLAGS = -Wall -Wno-unused-function -I src
+SRC    = src
 
-all: $(TARGET)
+interprete: $(SRC)/parser.tab.c $(SRC)/lex.yy.c
+	$(CC) $(CFLAGS) -o $@ $^ -lm
 
-$(TARGET): src/parser.y src/lexer.l
-	bison -d -o src/parser.tab.c src/parser.y
-	flex -o src/lex.yy.c src/lexer.l
-	$(CC) -I src -o $(TARGET) src/parser.tab.c src/lex.yy.c
+$(SRC)/parser.tab.c $(SRC)/parser.tab.h: $(SRC)/parser.y $(SRC)/ast.h
+	bison -d -o $(SRC)/parser.tab.c $(SRC)/parser.y
+
+$(SRC)/lex.yy.c: $(SRC)/lexer.l $(SRC)/parser.tab.h
+	flex -o $@ $(SRC)/lexer.l
+
+test: interprete
+	./interprete ejemplos/ejemplo1.cal
+	./interprete ejemplos/ejemplo2.cal
 
 clean:
-	rm -f $(TARGET) src/parser.tab.* src/lex.yy.c
+	rm -f interprete $(SRC)/parser.tab.* $(SRC)/lex.yy.c
+
+.PHONY: test clean

@@ -1,0 +1,16 @@
+# Ejemplo 1: variables, funciones y reportes
+minimo = 70;   # cambia la calificación mínima aprobatoria
+
+mate = 90;
+espanol = 85;
+historia = 62;
+
+imprimir "Promedio de Juan:", promedio(mate, espanol, historia);
+imprimir "Mejor materia:", mayor(mate, espanol, historia);
+
+reporte "Juan Perez": mate, espanol, historia;
+reporte "Ana Lopez": 100, 95, 98;
+
+# Calificación final ponderada: examen 50%, tareas 30%, proyecto 20%
+final = ponderado(80, 50, 90, 30, 100, 20);
+imprimir "Final ponderada:", redondear(final, 1);

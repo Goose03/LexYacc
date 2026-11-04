@@ -1,0 +1,6 @@
+.git
+.gitignore
+interprete
+src/parser.tab.*
+src/lex.yy.c
+README.md

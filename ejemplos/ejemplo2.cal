@@ -1,0 +1,26 @@
+# Ejemplo 2: ciclos y condicionales
+# Simula 5 parciales y cuenta cuántos se aprobaron
+i = 1;
+cal = 50;
+aprobados = 0;
+
+mientras (i <= 5) {
+    imprimir "Parcial", i, "=", cal;
+    si (cal >= minimo) {
+        aprobados = aprobados + 1;
+    } sino {
+        imprimir "  -> reprobado, a regularizar";
+    }
+    cal = cal + 10;
+    i = i + 1;
+}
+
+imprimir "Parciales aprobados:", aprobados, "de 5";
+
+si (aprobados >= 3 y no (aprobados == 5)) {
+    imprimir "Resultado: aprobó, pero puede mejorar";
+}
+
+# Línea con error para probar la recuperación (descomenta para probar):
+# x = 10 / 0;
+# y = ;
