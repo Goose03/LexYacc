@@ -1,0 +1,3 @@
+interprete
+src/parser.tab.*
+src/lex.yy.c
